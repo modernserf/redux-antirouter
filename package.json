@@ -1,0 +1,11 @@
+{
+  "name": "redux-antirouter",
+  "version": "1.0.0",
+  "description": "Rethinking best routing practices",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Justin Falcone <justin@justinfalcone.com> (https://justinfalcone.com/)",
+  "license": "MIT"
+}

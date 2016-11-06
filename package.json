@@ -1,11 +1,43 @@
 {
   "name": "redux-antirouter",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Rethinking best routing practices",
   "main": "index.js",
+  "keywords": [
+    "redux"
+  ],
   "scripts": {
-    "test": "node test.js"
+    "lint": "eslint src/",
+    "tape": "node test.js",
+    "rollup": "rollup -c",
+    "test": "npm run lint && npm run rollup && npm run tape | faucet",
+    "prepublish": "npm run rollup",
+    "deploy": "npm test && npm publish"
   },
   "author": "Justin Falcone <justin@justinfalcone.com> (https://justinfalcone.com/)",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "peerDependencies": {
+    "history": "4.x",
+    "react": "15.x",
+    "react-redux": "4.x"
+  },
+  "devDependencies": {
+    "buble": "^0.14.2",
+    "eslint": "^3.9.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-import": "^2.1.0",
+    "eslint-plugin-promise": "^3.3.1",
+    "eslint-plugin-standard": "^2.0.1",
+    "faucet": "0.0.1",
+    "redux": "^3.6.0",
+    "rollup": "^0.36.3",
+    "rollup-plugin-buble": "^0.14.0",
+    "tape": "^4.6.2"
+  },
+  "dependencies": {
+    "query-string": "^4.2.3"
+  }
 }

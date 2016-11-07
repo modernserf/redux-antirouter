@@ -41,16 +41,16 @@ function LinkBase ({ children, href, onNavigate, className, style }) {
 
 const LinkConnector = connect(
     (appState) => appState,
-    undefined,
-    (appState, dispatch, { props, context }) => {
+    (dispatch) => ({ dispatch }),
+    (appState, { dispatch }, { props, context }) => {
         const {
             children, action, isActive,
             className, activeClassName, style, activeStyle,
-        } = this.props
-        const { selectRoute, rootReducer } = this.context
+        } = props
+        const { selectRoute, rootReducer } = context
 
         const currentRoute = selectRoute(appState)
-        const nextRoute = rootReducer(appState, action)
+        const nextRoute = selectRoute(rootReducer(appState, action))
         const active = isActive(currentRoute, nextRoute)
 
         return {
@@ -64,7 +64,7 @@ const LinkConnector = connect(
 )(LinkBase)
 
 export function Link (props, context) {
-    return h(LinkConnector, { props, context })
+    return h(LinkConnector, { props, context: context[CONTEXT] })
 }
 
 Link.PropTypes = {
@@ -87,7 +87,7 @@ Link.contextTypes = {
 }
 
 function merge (a, b) {
-    if (a && b) { return { ...a, ...b } }
+    if (a && b) { return Object.assign({}, a, b) }
     return a || b
 }
 

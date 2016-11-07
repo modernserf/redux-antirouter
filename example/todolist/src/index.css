@@ -1,0 +1,227 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #eee;
+  font-size: 24px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+a:visited {
+    color: blue;
+}
+
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.App {
+    margin: 4rem auto;
+    max-width: 600px;
+}
+
+.App__header h1 {
+    text-align: center;
+    color: purple;
+    font-weight: normal;
+    font-size: 3rem;
+    line-height: 1;
+    margin: 1rem;
+}
+
+.App__container {
+    background-color: white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.TodoInput {
+    /*font-size: 2rem;*/
+}
+
+.TodoInput input {
+    font-size: inherit;
+    font-family: inherit;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border: 1px solid #ddd  ;
+}
+
+.Todo {
+    padding: 0.5rem;
+}
+
+.TodoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.TodoItem__text-wrap {
+    flex-grow: 1;
+    flex-basis: 100%;
+}
+
+.TodoText {
+    margin: 0;
+    padding: 0.1rem 1rem 0;
+}
+
+.TodoItem__check {
+    cursor: pointer;
+    display: block;
+    appearance: none;
+    border: 1px solid #aaa;
+    background-color: transparent;
+    border-radius: 1rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+.TodoItem--completed .TodoText {
+    color: #666;
+    text-decoration: line-through;
+}
+
+.TodoItem--completed .TodoItem__check:after {
+    content: "✓";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0.2rem;
+    font-family: sans-serif;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.TodoItem__delete {
+    cursor: pointer;
+    display: block;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    color: #666;
+    font-size: 2rem;
+    line-height: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.TodoItem:hover .TodoItem__delete {
+    opacity: 1;
+}
+
+.TodoItem__delete:focus {
+    opacity: 1;
+}
+
+.EditTodo {
+    margin: 0 3rem;
+}
+
+.EditTodo input {
+    width: 100%;
+    font-size: inherit;
+}
+
+.TagsGroup__header h2 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.TagsGroup__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+}
+
+.TagsGroup__tags {
+    margin: 0;
+}
+
+.TagsGroup__tags li {
+    display: inline-block;
+    padding: 4px;
+}
+
+.TagsGroup__clear {
+    opacity: 0;
+    cursor: pointer;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+}
+
+.TagsGroup__clear.active {
+    opacity: 1;
+}
+
+.TagFilter {
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid #eee;
+    color: #999;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.TagFilter--active {
+    border-color: black;
+    color: black;
+}
+
+.Status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #666;
+}
+
+.Status nav {
+    flex-grow: 0;
+}
+
+.Status__count {
+    flex-basis: 100px;
+}
+
+a.Status__link {
+    display: inline-block;
+    margin: 4px;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: inherit;
+}
+
+a.Status__link.active {
+    color: black;
+    border-color: #666;
+}
+
+.Status__clear {
+    opacity: 0;
+    cursor: pointer;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+}
+
+.Status__clear.active {
+    opacity: 1;
+}

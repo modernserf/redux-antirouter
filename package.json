@@ -2,15 +2,17 @@
   "name": "redux-antirouter",
   "version": "0.1.0",
   "description": "Rethinking best routing practices",
+  "repository": "github:modernserf/redux-antirouter",
   "main": "index.js",
   "keywords": [
     "redux"
   ],
   "scripts": {
     "lint": "eslint src/",
-    "tape": "node test.js",
+    "tape": "tape test/**/*.js | faucet",
     "rollup": "rollup -c",
-    "test": "npm run lint && npm run rollup && npm run tape | faucet",
+    "quick-test": "npm run rollup && npm run tape",
+    "test": "npm run lint && npm run rollup && npm run tape",
     "prepublish": "npm run rollup",
     "deploy": "npm test && npm publish"
   },
@@ -25,11 +27,13 @@
     "react-redux": "4.x"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.0",
     "buble": "^0.14.2",
     "eslint": "^3.9.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-promise": "^3.3.1",
+    "eslint-plugin-react": "^6.6.0",
     "eslint-plugin-standard": "^2.0.1",
     "faucet": "0.0.1",
     "redux": "^3.6.0",

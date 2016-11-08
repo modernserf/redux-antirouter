@@ -11,7 +11,7 @@ npm install redux-antirouter history
 
 ## createRouterMiddleware
 
-Derive the route from the app state; dispatch an action when the addressbar is changed by the user.
+Derive the route from the app state; dispatch an action when the address bar is changed by the user.
 
 ```js
 createRouterMiddleware({
@@ -28,6 +28,12 @@ Real links that get their URLs from the actions they dispatch
 ```js
 <LinkProvider selectRoute={(state) =>  ({ path, query })}
     rootReducer={(state, action) => state}>
-    <Link action={action} activeClassName={} />
+    <Link action={action}
+        className="link-class"
+        activeClassName="active"
+        style={{ color: "blue" }}
+        activeStyle={{ fontWeight: "bold" }}
+        isActive={(currentRoute, nextRoute) =>
+            currentRoute.path[0] === nextRoute.path[0]} />
 </LinkProvider>
 ```

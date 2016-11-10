@@ -7,14 +7,19 @@ export function createRouteHandler ({ history, onChange, location }) {
         }
     }
 
-    let prevRoute
+    let prevLocation = {}
     const setLocationFromRoute = (route) => {
-        if (route === prevRoute) { return }
-        prevRoute = route
-        history.push(routeToLocation(route))
+        const location = routeToLocation(route)
+        if (locationEq(prevLocation, location)) { return }
+        prevLocation = location
+        history.push(location)
     }
 
     setRouteFromLocation(location)
     history.listen(setRouteFromLocation)
     return setLocationFromRoute
+}
+
+function locationEq (a, b) {
+    return a.pathname === b.pathname && a.search === b.search
 }

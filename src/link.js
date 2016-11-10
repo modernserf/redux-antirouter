@@ -22,6 +22,11 @@ export class LinkProvider extends React.Component {
 LinkProvider.propTypes = {
     selectRoute: PropTypes.func.isRequired,
     rootReducer: PropTypes.func.isRequired,
+    mapStateToURL: PropTypes.func,
+}
+
+LinkProvider.defaultProps = {
+    mapRouteToURL: routeToURL,
 }
 
 LinkProvider.childContextTypes = {
@@ -47,7 +52,7 @@ const LinkConnector = connect(
             children, action, isActive,
             className, activeClassName, style, activeStyle,
         } = props
-        const { selectRoute, rootReducer } = context
+        const { selectRoute, rootReducer, mapRouteToURL } = context
 
         const currentRoute = selectRoute(appState)
         const nextRoute = selectRoute(rootReducer(appState, action))
@@ -55,7 +60,7 @@ const LinkConnector = connect(
 
         return {
             children,
-            href: routeToURL(nextRoute),
+            href: mapRouteToURL(nextRoute),
             onNavigate: () => dispatch(action),
             className: active ? `${className} ${activeClassName}` : className,
             style: active ? merge(style, activeStyle) : style,

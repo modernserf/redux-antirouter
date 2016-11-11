@@ -1,4 +1,4 @@
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory, createHashHistory } from 'history'
 import { createRouteHandler } from './base-router'
 
 export function createRouterMiddleware (params) {
@@ -19,4 +19,16 @@ export function createRouterMiddleware (params) {
             return value
         }
     }
+}
+
+export function createHashRouterMiddleware ({ selectRoute, onChange }) {
+    return createRouterMiddleware({
+        history: createHashHistory(),
+        location: {
+            pathname: window.location.hash.replace('#', '') || '/',
+            search: window.location.search,
+        },
+        selectRoute,
+        onChange,
+    })
 }

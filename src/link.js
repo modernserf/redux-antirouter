@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { routeToURL } from './route'
+import { routeToURL, hashRouteToURL } from './route'
 
 const CONTEXT = 'redux-antirouter/Link/getNextRoute'
 
@@ -31,6 +31,12 @@ LinkProvider.defaultProps = {
 
 LinkProvider.childContextTypes = {
     [CONTEXT]: PropTypes.object,
+}
+
+export function HashLinkProvider ({ selectRoute, rootReducer, children }) {
+    return React.createElement(
+        LinkProvider,
+        { selectRoute, rootReducer, children, mapStateToURL: hashRouteToURL })
 }
 
 function LinkBase ({ children, href, onNavigate, className, style }) {

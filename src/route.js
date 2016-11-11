@@ -20,3 +20,7 @@ export function routeToURL (route) {
     const { pathname, search } = routeToLocation(route)
     return pathname + search
 }
+
+export function hashRouteToURL (route) {
+    return '#' + routeToURL(route)
+}
